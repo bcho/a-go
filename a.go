@@ -50,6 +50,11 @@ func main() {
 			continue
 		}
 
+		// Skip hidden file.
+		if strings.HasPrefix(info.Name(), ".") {
+			continue
+		}
+
 		m := NewMove(
 			filepath.Join(baseDir, info.Name()),
 			destPathf(destDirFmt, info),
