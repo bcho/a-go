@@ -117,6 +117,11 @@ func (m move) Run() error {
 	if err != nil {
 		return err
 	}
+
+	if err := os.MkdirAll(m.destDir, os.ModePerm); err != nil {
+		return err
+	}
+
 	return os.Rename(m.srcPath, destPath)
 }
 
